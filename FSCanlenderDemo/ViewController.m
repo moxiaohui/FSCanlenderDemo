@@ -18,10 +18,16 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  UILabel *dateLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 400, self.view.frame.size.width, 50)];
+  dateLb.textAlignment = NSTextAlignmentCenter;
+  dateLb.textColor = [UIColor blackColor];
+  [self.view addSubview:dateLb];
+  
   self.canlenderView = [[MOCanlenderView alloc] initWithFrame:CGRectMake(0, 70, self.view.frame.size.width, 350)];
   __weak typeof(self) weakSelf = self;
   self.canlenderView.changedDate = ^{
-    NSLog(@"changedDate: %@", weakSelf.canlenderView.date);
+    dateLb.text = weakSelf.canlenderView.date.description;
   };
   [self.view addSubview:self.canlenderView];
 }

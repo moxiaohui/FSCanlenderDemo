@@ -78,6 +78,7 @@
   self.calendar.locale = [NSLocale localeWithLocaleIdentifier:@"zh-CN"];
   self.calendar.backgroundColor = [UIColor whiteColor];
   self.calendar.appearance.weekdayTextColor = [UIColor blackColor];
+  // 星期栏显示style
   self.calendar.appearance.caseOptions = FSCalendarCaseOptionsWeekdayUsesSingleUpperCase;
   [self addSubview:self.calendar];
   [self bringSubviewToFront:headerView];
@@ -129,6 +130,7 @@
   }];
 }
 
+#pragma mark - 日历显示隐藏时: 修改title显示
 - (void)changeDateBtnTitleWithShow:(BOOL)show {
   NSString *dateStr = @"";
   if (show) {
@@ -152,6 +154,7 @@
   [self setBtnImageRightAlignment];
 }
 
+#pragma mark - 点击 < 按钮
 - (void)previousClicked {
   if (self.calendarShow) { // 上个月
     NSDate *currentMonth = self.calendar.currentPage;
@@ -165,6 +168,7 @@
   [self changeDateBtnTitleWithShow:self.calendarShow];
 }
 
+#pragma mark - 点击 > 按钮
 - (void)nextClicked {
   if (self.calendarShow) { // 下个月
     NSDate *currentMonth = self.calendar.currentPage;
